@@ -77,7 +77,7 @@ const status = [
 
     if (messageReaction.message.partial) await messageReaction.message.fetch();
 
-    if (messageReaction.message.id == "888712374859747328") { //Settare id messaggio
+    if (messageReaction.message.id == "888725648154185728") { //Settare id messaggio
         
         if (messageReaction._emoji.name == "♂️") {
             var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
@@ -115,7 +115,7 @@ const status = [
 
     if (messageReaction.message.partial) await messageReaction.message.fetch();
 
-    if (messageReaction.message.id == "888712374859747328") {
+    if (messageReaction.message.id == "888725648154185728") {
         if (messageReaction._emoji.name == "♂️") {
             var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
             utente.roles.remove("861523533380583435");
