@@ -53,10 +53,10 @@ const status = [
 
     //Reaction role
     client.on("message", message => {
-            if (message.content == "!ruoli") {
+            if (message.content == "%ruoli") {
                 var embed = new Discord.MessageEmbed() //Crea il tuo embed o messaggio normale
                     .setTitle("Ruoli disponibili")
-                    .setDescription("Clicca sulle reazioni per ottenere i ruoli: \n\n♂️ <@&861523533380583435> \n\n♀️ <@&861523570256248855> \n\n➕ <@&861523272365113344> \n\n➖ <@&861523329592721428> \n\n🎮 <@&860593327154135072> \n\n🏅 <@&860593339544240148> \n\n🎯 <@&860587426754199614> \n\n💻 <@&888726918059401256> \n\n📡 <@&888726927060402246> \n\n🕹️ <@&888726928306077736> \n\n📱 <@&888727038427533402>")
+                    .setDescription("Clicca sulle reazioni per ottenere i ruoli: \n\n♂️ <@&861523533380583435> \n\n♀️ <@&861523570256248855> \n\n➕ <@&861523272365113344> \n\n➖ <@&861523329592721428> \n\n🎮 <@&860593327154135072> \n\n🏅 <@&860593339544240148> \n\n🎯 <@&860587426754199614> \n\n💻 <@&888726918059401256> \n\n📡 <@&888789084347179079> \n\n🕹️ <@&888726928306077736> \n\n📱 <@&888727038427533402>")
                     .setColor('YELLOW')
         
                 message.channel.send(embed)
@@ -117,7 +117,7 @@ const status = [
         }
         if (messageReaction._emoji.name == "📡") {
             var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
-            utente.roles.add("8888726927060402246"); //Settare ruolo
+            utente.roles.add("888789084347179079"); //Settare ruolo
         }
         if (messageReaction._emoji.name == "🕹️") {
             var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
@@ -170,7 +170,7 @@ const status = [
         }
         if (messageReaction._emoji.name == "📡") {
             var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
-            utente.roles.remove("8888726927060402246");
+            utente.roles.remove("888789084347179079");
         }
         if (messageReaction._emoji.name == "🕹️") {
             var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
