@@ -18,14 +18,13 @@ const fs = require('fs');
 const command = require('nodemon/lib/config/command');
 
 client.once('ready', () => {
-    console.log("im_Red_Fox Official è online!");
+    console.log("6.0 è online!");
 })
 
 
 const status = [
     `| =help |`,
     `il server`,
-    `| =ticket |`,
 ];
     
     let index = 0;
@@ -40,12 +39,12 @@ const status = [
     const snipes = new Discord.Collection()
     // Member Count
     client.on("guildMemberAdd", member => {
-        var canale = client.channels.cache.get("885286791886819388")
-        canale.setName("👥Tutti insieme: " + member.guild.memberCount) //Impostare il nome del canale
+        var canale = client.channels.cache.get("888683364192768020")
+        canale.setName("👫| Membri: " + member.guild.memberCount) //Impostare il nome del canale
     });
     client.on("guildMemberRemove", member => {
-        var canale = client.channels.cache.get("885286791886819388")
-        canale.setName("👥Tutti insieme: " + member.guild.memberCount) //Impostare il nome del canale
+        var canale = client.channels.cache.get("888683364192768020")
+        canale.setName("👫| Membri: " + member.guild.memberCount) //Impostare il nome del canale
     });
 
 
@@ -53,7 +52,7 @@ const status = [
     client.on('messageDelete', message => {
         snipes.set(message.channel.id, message)
 
-        const LogChannel = client.channels.cache.get('884726534928203796')
+        const LogChannel = client.channels.cache.get('860811248962502676')
         const DeletedLog = new Discord.MessageEmbed()
         .setTitle("**Messaggio cancellato**")
         .addField('**Eliminato da**',  `${message.author} - (${message.author.id})`)
@@ -65,7 +64,7 @@ const status = [
     })
     //messaggio modificato
     client.on('messageUpdate', async(oldMessage, newMessage) => {
-        const LogChannel = client.channels.cache.get('884726534928203796')
+        const LogChannel = client.channels.cache.get('860811248962502676')
         const EditedLog = new Discord.MessageEmbed()
         .setTitle("**Messaggio modificato**")
         .addField('**Modificato da**',  `${oldMessage.author} - (${oldMessage.author.id})`)
@@ -81,7 +80,7 @@ const status = [
     
         //clear
         client.on("message", message => {
-    if (message.content.startsWith("=clear")) {
+    if (message.content.startsWith("$clear")) {
 
         if (!message.member.hasPermission("MANAGE_MESSAGES")) {
             message.channel.send('non hai il permesso di eseguire questo comando!');
@@ -124,15 +123,9 @@ client.on('message', message => {
 
     client.on('guildMemberAdd', member => {
         //Autoruolo
-    const ruolo = member.guild.roles.cache.find(r => r.name === '🦊 Iscritto');
+    const ruolo = member.guild.roles.cache.find(r => r.name === 'Membro');
     member.roles.add(ruolo);
-
-    const ruolo1 = member.guild.roles.cache.find(r => r.name === '▬▬▬▬▬▬ Ruoli ▬▬▬▬▬▬');
-    member.roles.add(ruolo1);
-
-    const ruolo2 = member.guild.roles.cache.find(r => r.name === '▬▬▬▬ Onorificenze ▬▬▬▬');
-    member.roles.add(ruolo2);
-})
+    })
 
 const commandFiles = fs.readdirSync('./commands/').filter(File => File.endsWith('.js'));
 for(const file of commandFiles){
@@ -168,17 +161,5 @@ client.on('message', message => {
     }
     else if(command == 'botinfo'){
         client.commands.get('botinfo').execute(client, message, args);
-    }
-    else if(command == 'ticket'){
-        client.commands.get('ticket').execute(client, message, args);
-    }
-    else if(command == 'twitch'){
-        client.commands.get('twitch').execute(client, message, args);
-    }
-    else if(command == 'telegram'){
-        client.commands.get('telegram').execute(client, message, args);
-    }
-    else if(command == 'instagram'){
-        client.commands.get('instagram').execute(client, message, args);
     }
 });    

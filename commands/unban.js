@@ -23,7 +23,7 @@ module.exports = {
  const unbanEmbed = new Discord.MessageEmbed()
  .setAuthor('Unban', author.user.displayAvatarURL())
  .setDescription(`**Moderatore:** ${author.user.tag} (${author.id}) \n**Utente:** ${target}) \n**Motivo:** ${motivo}`)
- .setFooter('🦊 Im_Red_Fox Twitch')
+ .setFooter('Gaming Community 6.0')
  .setTimestamp()
  .setColor('GREEN')
 
