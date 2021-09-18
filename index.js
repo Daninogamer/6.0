@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const config = require('./config.json')
-const client = new Discord.Client()
+const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
 
 client.login(process.env.token);
@@ -23,7 +23,7 @@ client.once('ready', () => {
 
 
 const status = [
-    `| =help |`,
+    `| $help |`,
     `il server`,
 ];
     
@@ -35,7 +35,11 @@ const status = [
         client.user.setActivity(status2, { type: "WATCHING" }).catch(console.error)
         index++;
     }, 7500)
-
+    //welcome message
+    client.on("guildMemberAdd", (member) => {
+        //console.log(member.guild); Per avere tutte le info del utente e del server
+        client.channels.cache.get("860856428722257941").send("😁Benvenuto/a" + member.toString() + "\n\n📜Leggi le regole in <#860795447844405268>, \n\n ✨Prendi i ruoli relativi ai giochi in <#860795633635819520> per vedere dei canali nascosti.");
+    })
     const snipes = new Discord.Collection()
     // Member Count
     client.on("guildMemberAdd", member => {
@@ -47,36 +51,101 @@ const status = [
         canale.setName("👫| Membri: " + member.guild.memberCount) //Impostare il nome del canale
     });
 
+    //Reaction role
+    client.on("message", message => {
+            if (message.content == "!ruoli") {
+                var embed = new Discord.MessageEmbed() //Crea il tuo embed o messaggio normale
+                    .setTitle("Ruoli disponibili")
+                    .setDescription("Clicca sulle reazioni per ottenere i ruoli: \n\n♂️ <@&861523533380583435> \n\n♀️ <@&861523570256248855> \n\n➕ <@&861523272365113344> \n\n➖ <@&861523329592721428> \n\n🎮 <@&860593327154135072> \n\n🏅 <@&860593339544240148> \n\n🎯 <@&860587426754199614>")
+                    .setColor('YELLOW')
+        
+                message.channel.send(embed)
+                    .then(msg => {
+                        //Inserire tutte le reazioni che si vogliono
+                        msg.react("♂️")
+                        msg.react("♀️")
+                        msg.react("➕")
+                        msg.react("➖")
+                        msg.react("🎮") 
+                        msg.react("🏅")
+                        msg.react("🎯")
+                    })
+    }
+ })
+ client.on("messageReactionAdd", async function (messageReaction, user) {
+    if (user.bot) return //Le reaction dei bot verranno escluse
 
-    //Messaggio eliminato
-    client.on('messageDelete', message => {
-        snipes.set(message.channel.id, message)
+    if (messageReaction.message.partial) await messageReaction.message.fetch();
 
-        const LogChannel = client.channels.cache.get('860811248962502676')
-        const DeletedLog = new Discord.MessageEmbed()
-        .setTitle("**Messaggio cancellato**")
-        .addField('**Eliminato da**',  `${message.author} - (${message.author.id})`)
-        .addField("**In**", message.channel)
-        .addField('**Contenuto del messaggio**', message.content)
-        .setColor('PURPLE')
-        .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
-        LogChannel.send(DeletedLog)
-    })
-    //messaggio modificato
-    client.on('messageUpdate', async(oldMessage, newMessage) => {
-        const LogChannel = client.channels.cache.get('860811248962502676')
-        const EditedLog = new Discord.MessageEmbed()
-        .setTitle("**Messaggio modificato**")
-        .addField('**Modificato da**',  `${oldMessage.author} - (${oldMessage.author.id})`)
-        .addField("**In**", oldMessage.channel)
-        .addField('**Vecchio messaggio**', oldMessage.content)
-        .addField('**Nuovo messaggio**', newMessage.content)
-        .setColor('PURPLE')
-        .setThumbnail(oldMessage.author.displayAvatarURL({dynamic: true}))
-        await LogChannel.send(EditedLog)
-    })
+    if (messageReaction.message.id == "888712374859747328") { //Settare id messaggio
+        
+        if (messageReaction._emoji.name == "♂️") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.add("861523533380583435"); //Settare ruolo
+        }
+        if (messageReaction._emoji.name == "♀️") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.add("861523570256248855"); //Settare ruolo
+        }
+        if (messageReaction._emoji.name == "➕") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.add("861523272365113344"); //Settare ruolo
+        }
+        if (messageReaction._emoji.name == "➖") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.add("861523329592721428"); //Settare ruolo
+        }
+        if (messageReaction._emoji.name == "🎮") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.add("860593327154135072"); //Settare ruolo
+        }   
+        if (messageReaction._emoji.name == "🏅") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.add("860593339544240148"); //Settare ruolo
+        }
+        if (messageReaction._emoji.name == "🎯") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.add("860587426754199614"); //Settare ruolo
+        }
+    }
+ })
+// Reaction role remove
+ client.on("messageReactionRemove", async function (messageReaction, user) {
+    if (user.bot) return
 
+    if (messageReaction.message.partial) await messageReaction.message.fetch();
 
+    if (messageReaction.message.id == "888712374859747328") {
+        if (messageReaction._emoji.name == "♂️") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.remove("861523533380583435");
+        }
+        if (messageReaction._emoji.name == "♀️") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.remove("861523570256248855");
+        }
+        if (messageReaction._emoji.name == "➕") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.remove("861523272365113344");
+        }
+        if (messageReaction._emoji.name == "➖") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.remove("861523329592721428");
+        }
+        if (messageReaction._emoji.name == "🎮") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.remove("860593327154135072");
+        }
+        if (messageReaction._emoji.name == "🏅") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.remove("860593339544240148");
+        }
+        if (messageReaction._emoji.name == "🎯") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.remove("860587426754199614");
+        }
+    }
+})
     
         //clear
         client.on("message", message => {
