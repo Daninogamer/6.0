@@ -184,6 +184,33 @@ const status = [
     }
 })
 
+    //Messaggio eliminato
+    client.on('messageDelete', message => {
+        snipes.set(message.channel.id, message)
+
+        const LogChannel = client.channels.cache.get('884726534928203796')
+        const DeletedLog = new Discord.MessageEmbed()
+        .setTitle("**Messaggio cancellato**")
+        .addField('**Eliminato da**',  `${message.author} - (${message.author.id})`)
+        .addField("**In**", message.channel)
+        .addField('**Contenuto del messaggio**', message.content)
+        .setColor('PURPLE')
+        .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
+        LogChannel.send(DeletedLog)
+    })
+    //messaggio modificato
+    client.on('messageUpdate', async(oldMessage, newMessage) => {
+        const LogChannel = client.channels.cache.get('884726534928203796')
+        const EditedLog = new Discord.MessageEmbed()
+        .setTitle("**Messaggio modificato**")
+        .addField('**Modificato da**',  `${oldMessage.author} - (${oldMessage.author.id})`)
+        .addField("**In**", oldMessage.channel)
+        .addField('**Vecchio messaggio**', oldMessage.content)
+        .addField('**Nuovo messaggio**', newMessage.content)
+        .setColor('PURPLE')
+        .setThumbnail(oldMessage.author.displayAvatarURL({dynamic: true}))
+        await LogChannel.send(EditedLog)
+    })
     
         //clear
         client.on("message", message => {
