@@ -188,7 +188,7 @@ const status = [
     client.on('messageDelete', message => {
         snipes.set(message.channel.id, message)
 
-        const LogChannel = client.channels.cache.get('884726534928203796')
+        const LogChannel = client.channels.cache.get('860811248962502676')
         const DeletedLog = new Discord.MessageEmbed()
         .setTitle("**Messaggio cancellato**")
         .addField('**Eliminato da**',  `${message.author} - (${message.author.id})`)
@@ -200,7 +200,7 @@ const status = [
     })
     //messaggio modificato
     client.on('messageUpdate', async(oldMessage, newMessage) => {
-        const LogChannel = client.channels.cache.get('884726534928203796')
+        const LogChannel = client.channels.cache.get('860811248962502676')
         const EditedLog = new Discord.MessageEmbed()
         .setTitle("**Messaggio modificato**")
         .addField('**Modificato da**',  `${oldMessage.author} - (${oldMessage.author.id})`)
