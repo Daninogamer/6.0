@@ -32,7 +32,7 @@ module.exports = {
             const kickEmbed = new Discord.MessageEmbed()
             .setAuthor('kick', author.user.displayAvatarURL())
             .setDescription(`**Moderatore:** ${author.user.tag} (${author.id}) \n**Utente:** ${target.user.tag} (${target.id}) \n**Motivo:** ${motivo}`)
-            .setFooter('Gaming Community 6.0')
+            .setFooter('🎃 Gaming Community 6.0')
             .setTimestamp()
             .setColor('RED')
 
