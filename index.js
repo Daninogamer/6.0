@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const config = require('./config.json')
 const client = new Discord.Client()
+const primoMessaggio = require('./utility/primoMessaggio');
+const reactionRole = require('./utility/reactionroles');
 
 
 client.login(process.env.token);
@@ -19,6 +21,9 @@ const command = require('nodemon/lib/config/command');
 
 client.once('ready', () => {
     console.log("6.0 è online!");
+
+    //primoMessaggio(client, '860795633635819520', '**Clicca sulle reaction per ricevere i ruoli!**\n\n ➕ <@&861523272365113344>\n\n ➖ <@&861523329592721428>\n\n ♂️ <@&861523533380583435>\n\n ♀️ <@&861523570256248855>\n\n 💻 <@&888726918059401256>\n\n 📡 <@&888789084347179079>\n\n 🕹️ <@&888726928306077736>\n\n 📱 <@&888727038427533402>\n\n 🥇 <@&860587426754199614>\n\n 🥈 <@&860593327154135072>\n\n 🥉 <@&860593339544240148>', ['➕', '➖', '♂️', '♀️', '💻', '📡', '🕹️', '📱', '🥇', '🥈', '🥉']);
+    reactionRole(client);
 })
 
 
