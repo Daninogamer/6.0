@@ -25,7 +25,9 @@ module.exports = (client) => {
 
         '<:rainbowsixSiege:861876454404128768>': '<@&860593327154135072>',
 
-        '<:rocketleague:861876570254868481>': '<@&860593339544240148>'
+        '<:rocketleague:861876570254868481>': '<@&860593339544240148>',
+        
+        '<:twitch:913790803640467516>' : '<@861167094044295188',
     };
 
     //lista reazioni e testo del messaggio
@@ -105,6 +107,9 @@ module.exports = (client) => {
     }, {
         name: "rocketleague",
         roleID: "860593339544240148",
+    }, {
+        name: "twitch",
+        roleID: "861167094044295188"
     }]
 
     const reactionAdd = (reaction, user, item) => {
