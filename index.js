@@ -5,7 +5,7 @@ const primoMessaggio = require('./utility/primoMessaggio');
 const reactionRole = require('./utility/reactionroles');
 
 
-client.login("ODkwMjIyNDI0MTExNTgzMjgz.YUsqPQ.XhtTymAicFsME26r8yDNql-Otfo");
+client.login(process.env.token);
 
 
 client.on("message", (message) => {
