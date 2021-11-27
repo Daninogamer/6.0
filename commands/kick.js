@@ -1,47 +1,33 @@
-const Discord = require('discord.js');
-const config = require('../config.json');
-
-
 module.exports = {
     name: 'kick',
-    description: 'Espelli un utente',
-     execute(message, args) {
- const author = message.member;
- const target = message.mentions.members.first();
- const motivo = args.slice(1).join(' ');
+    description: 'kicks user',
+    async execute(client, message, args, Discord){
+        
+        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send('**Non usare questo comando se non hai il permesso di kikare**')
 
- if(!author.hasPermission('KICK_MEMBERS')) {
-    return message.reply('**non hai il permesso di usare questo comando!**').then(msg => msg.delete({ timeout: 10000 }));
-}
+        const member = message.mentions.members.first();
+        let reason = args.slice(1).join(" ");
+        if (!reason) reason = "Nessuna ragione specificata";
 
- if (target === author) {
-     return message.reply('**Non puoi Espellere te stesso**').then(msg => msg.delete({ timeout: 10000 }));
- }
-
- if (!target) {
-     return message.reply('**Devi specificare un utente da Espellere**').then(msg => msg.delete({ timeout: 10000 }));
- }
-
- if (motivo.length === 0) {
-     return message.reply('**Devi specificare il motivo dell\' Espulsione**').then(msg => msg.delete({ timeout: 10000 }));
- }
-
- if (!message.guild.members.cache.get(target.id).kickable) {
-     return message.reply('**Non puoi Espellere questo utente**').then(msg => msg.delete({ timeout: 10000 }));
- }
-            const kickEmbed = new Discord.MessageEmbed()
-            .setAuthor('kick', author.user.displayAvatarURL())
-            .setDescription(`**Moderatore:** ${author.user.tag} (${author.id}) \n**Utente:** ${target.user.tag} (${target.id}) \n**Motivo:** ${motivo}`)
-            .setFooter('🎃 Gaming Community 6.0')
-            .setTimestamp()
-            .setColor('RED')
+        const embed = new Discord.MessageEmbed()
+        .setTitle(`**Sei stato kickato da ${message.guild.name}**`)
+        .setDescription(`**Ragione: ${reason}**`)
+        .setColor('RANDOM')
+        .setTimestamp()
+        .setFooter(member.user.tag, member.user.displayAvatarURL())
 
 
- target.kick(motivo)
 
- message.channel.send(`L'utente **${target.user.tag}** è stato Espulso da **${author.user.tag}** per **${motivo}**.`)
+        if (!args[0]) return message.channel.send('**Non hai taggato nessuno!**');
 
- message.client.channels.cache.get(config.canali.Kick_log).send({ embed: kickEmbed });
+        if(!member)  return message.channel.send("**L'utente non è valido o non è più nel server!**");
+
+        if(!member.kickable) return message.channel.send("**Non è stato possibile kickare questo utente!**");
+
+        await member.send(embed);
+        await member.kick({
+            reason: reason
+        }).then(() => message.channel.send("**L'utente " + member.user.tag + " è stato kickato!**"));
 
     }
 }

@@ -5,7 +5,7 @@ const primoMessaggio = require('./utility/primoMessaggio');
 const reactionRole = require('./utility/reactionroles');
 
 
-client.login(process.env.token);
+client.login("ODkwMjIyNDI0MTExNTgzMjgz.YUsqPQ.XhtTymAicFsME26r8yDNql-Otfo");
 
 
 client.on("message", (message) => {
@@ -177,11 +177,11 @@ client.on('message', message => {
     } else if(command == 'staff'){
         client.commands.get('staff').execute(message, args);
     } else if(command == 'ban'){
-        client.commands.get('ban').execute(message, args);
+        client.commands.get('ban').execute(client, message, args, Discord);
     } else if(command == 'unban'){
         client.commands.get('unban').execute(client, message, args, Discord);
     } else if(command == 'kick'){
-        client.commands.get('kick').execute(message, args);
+        client.commands.get('kick').execute(client, message, args, Discord);
     } else if(command == 'help'){
         client.commands.get('help').execute(message, args, Discord)
     }
