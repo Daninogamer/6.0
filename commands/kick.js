@@ -14,7 +14,7 @@ module.exports = {
         .setDescription(`**Ragione: ${reason}**`)
         .setColor('RANDOM')
         .setTimestamp()
-        .setFooter(member.user.tag, member.user.displayAvatarURL())
+        .setFooter(client.user.tag, client.user.displayAvatarURL())
 
 
 
