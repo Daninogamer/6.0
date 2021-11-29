@@ -200,4 +200,7 @@ client.on('message', message => {
     else if(command == 'ticket'){
         client.commands.get('ticket').execute(client, message, args);
     }
+    else if(command == 'instagram'){
+        client.commands.get('instagram').execute(client, message, args);
+    }
 });    

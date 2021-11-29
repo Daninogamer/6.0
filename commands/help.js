@@ -17,6 +17,7 @@ module.exports = {
             {name: 'clear', value: 'Elimina un numero di messaggi'},
             {name: 'avatar', value: 'Mosta l\'avatar di un utente'},
             {name: 'ticket', value: 'Ti aiuta ad aprire un ticket di assistenza'},
+            {name: 'instagram', value: 'Link del profilo instagram di Gaming community 6.0'},
             
         )
         .setImage('https://cdn.discordapp.com/attachments/888702291878764564/888702340033552404/logo.png')
