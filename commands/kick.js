@@ -2,6 +2,7 @@ module.exports = {
     name: 'kick',
     description: 'kicks user',
     async execute(client, message, args, Discord){
+        const author = message.member;
         
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send('**Non usare questo comando se non hai il permesso di kikare**')
 
@@ -11,7 +12,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
         .setTitle(`**Sei stato kickato da ${message.guild.name}**`)
-        .setDescription(`**Ragione: ${reason}**`)
+        .setDescription(`**Ragione: ${reason}\n\n Moderatore: ${author.user.tag}**`)
         .setColor('RANDOM')
         .setTimestamp()
         .setFooter(client.user.tag, client.user.displayAvatarURL())

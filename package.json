@@ -12,16 +12,29 @@
   "author": "Dani",
   "license": "ISC",
   "dependencies": {
+    "abort-controller": "^3.0.0",
+    "asynckit": "^0.4.0",
     "aybabtu": "^1.1.6",
+    "combined-stream": "^1.0.8",
+    "delayed-stream": "^1.0.0",
     "discord-button-pages": "^1.1.9",
     "discord-buttons": "^4.0.0",
     "discord.js": "^12.5.3",
     "discord.js-pagination": "^1.0.3",
+    "event-target-shim": "^6.0.2",
+    "mime-db": "^1.51.0",
+    "mime-types": "^2.1.34",
     "mm": "^3.2.0",
     "moment": "^2.29.1",
     "ms": "^2.1.3",
+    "node-fetch": "^3.1.0",
     "nodemon": "^2.0.14",
+    "prism-media": "^1.3.2",
+    "ramda": "^0.27.1",
     "reconlx": "^2.4.3",
-    "ultrax": "^1.8.18"
+    "setimmediate": "^1.0.5",
+    "tweetnacl": "^1.0.3",
+    "ultrax": "^1.8.18",
+    "ws": "^8.3.0"
   }
 }

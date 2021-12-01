@@ -16,6 +16,7 @@ const prefix = config.prefix;
 
 client.commands = new Discord.Collection();
 
+
 const fs = require('fs');
 const command = require('nodemon/lib/config/command');
 
@@ -102,57 +103,6 @@ client.on('message', message => {
     
 })
 
-    //Reaction rules
-
-    client.on("message", message => {
-        if (message.content == ".eeeeeesapessiilcomandopirla!") {
-            var embed = new Discord.MessageEmbed() //Crea il tuo embed o messaggio normale
-                .setTitle("Reaction roles")
-                .setDescription("Clicca sulle reazioni per ottenere i ruoli")
-    
-            message.channel.send(embed)
-                .then(msg => {
-                    //Inserire tutte le reazioni che si vogliono
-                    msg.react("🤟")
-                    msg.react("🖐️")
-                })
-        }
-    })
-    //Quando viene cliccata una reazione
-    client.on("messageReactionAdd", async function (messageReaction, user) {
-        if (user.bot) return //Le reaction dei bot verranno escluse
-    
-        if (messageReaction.message.partial) await messageReaction.message.fetch();
-    
-        if (messageReaction.message.id == "907912528321978391") { //Settare id messaggio
-            if (messageReaction._emoji.name == "🤟") {
-                var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
-                utente.roles.add("861523272365113344"); //Settare ruolo
-            }
-            if (messageReaction._emoji.name == "🖐️") {
-                var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
-                utente.roles.add("861523329592721428");
-            }
-        }
-    })
-    //Quando viene rimossa una reazione
-    client.on("messageReactionRemove", async function (messageReaction, user) {
-        if (user.bot) return
-    
-        if (messageReaction.message.partial) await messageReaction.message.fetch();
-    
-        if (messageReaction.message.id == "907912528321978391") {
-            if (messageReaction._emoji.name == "🤟") {
-                var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
-                utente.roles.remove("861523272365113344");
-            }
-            if (messageReaction._emoji.name == "🖐️") {
-                var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
-                utente.roles.remove("861523329592721428");
-            }
-        }
-    })
-
     client.on('guildMemberAdd', member => {
         //Autoruolo
     const ruolo = member.guild.roles.cache.find(r => r.name === 'Membro');
@@ -203,4 +153,4 @@ client.on('message', message => {
     else if(command == 'instagram'){
         client.commands.get('instagram').execute(client, message, args);
     }
-});    
+});

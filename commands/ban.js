@@ -11,8 +11,8 @@ module.exports = {
         if (!reason) reason = "**Nessuna ragione specificata**";
 
         const embed = new Discord.MessageEmbed()
-        .setTitle(`**Sei stato bannato da ${message.guild.name}**`)
-        .setDescription(`**Ragione: ${reason}**`)
+        .setTitle(`**Sei stato bannato dal server ${message.guild.name}**`)
+        .setDescription(`**Ragione: ${reason}\n\n Moderatore: ${author.user.tag}**`)
         .setColor('RANDOM')
         .setTimestamp()
         .setFooter(client.user.tag, client.user.displayAvatarURL())
