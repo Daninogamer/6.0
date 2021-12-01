@@ -3,6 +3,7 @@ module.exports = {
     description: 'kicks user',
     async execute(client, message, args, Discord){
         const author = message.member;
+        const target = message.mentions.members.first();
         
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send('**Non usare questo comando se non hai il permesso di kikare**')
 
@@ -28,7 +29,8 @@ module.exports = {
         await member.send(embed);
         await member.kick({
             reason: reason
-        }).then(() => message.channel.send("**L'utente " + member.user.tag + " è stato kickato!**"));
+        }).then(() => message.channel.send(`L\'utente **${target.user.tag}** è stato bannato da **${author.user.tag}** per **${reason}**`));
+
 
     }
 }

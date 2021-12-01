@@ -2,6 +2,8 @@ module.exports = {
     name: 'ban',
     description: 'bans user',
     async execute(client, message, args, Discord){
+        const author = message.member;
+        const target = message.mentions.members.first();
 
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('**Non hai il permesso di bannare**')
 
@@ -28,7 +30,7 @@ module.exports = {
         await member.send(embed);
         await member.ban({
             reason: reason
-        }).then(() => message.channel.send("**L'utente " + member.user.tag + " è stato bannato!**"));
+        }).then(() => message.channel.send(`L\'utente **${target.user.tag}** è stato bannato da **${author.user.tag}** per **${reason}**`));
 
     }
 }
