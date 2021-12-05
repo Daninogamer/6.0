@@ -16,6 +16,9 @@ if (!member.voice.channel)
   if (!message.member.voice.channel)
     return message.reply("Joina in un canale vocale **COGLIONE**");
   member.voice.setChannel(message.member.voice.channel);
-message.channel.send("Membro spostato correttamente!");
+ let spostautente = new MessageEmbed()
+ .setDescription(`L'utente <@${member.id}> è stato spostato correttamente nel canale ${message.member.voice.channel}!`)
+ .setColor('RANDOM')
+ message.channel.send(spostautente)
   }
 }
