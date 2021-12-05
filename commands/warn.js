@@ -1,34 +1,41 @@
 const { MessageEmbed } = require('discord.js')
 
-module.exports = {
-    config: {
-        name: "warn",
-        description: "warn members",
-        usage: "m/warn <mention member/member id> [reason]",
-        aliases: []
-    },
-    run: async (bot, message, args) => {
+    module.exports = {
+        name: 'warn',
+        description: 'warn',
+        execute(bot, message, args){
+
         let warnPermErr = new MessageEmbed()
-        .setTitle("**User Permission Error!**")
-        .setDescription("**Sorry, you don't have permissions to use this! ❌**")
-            if(!message.channel.permissionsFor(message.member).has(['MANAGE_MESSAGES'])) return message.channel.send(warnPermErr);
+        .setTitle("**Erore nei permessi dell'utente**")
+        .setDescription("**Non hai il permesso di usare questo comando! ❌**")
+            if(!message.channel.permissionsFor(message.member).has(['BAN_MEMBER'])) return message.channel.send(warnPermErr);
     
             let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-            if(!member) return message.reply("Please mention a valid member of this server");
+            if(!member) return message.reply("Menziona un membro valido");
         
             let reason = args.slice(1).join(' ');
-            if(!reason) reason = "(No Reason Provided)";
+            if(!reason) reason = "(Nessuna ragione specificata)";
             
-            member.send(`You have been warned by <${message.author.username}> for this reason: ${reason}`)
-            .catch(error => message.channel.send(`Sorry <${message.author}> I couldn't n't warn because of : ${error}`));
+            member.send(`Sei stato warnato da <${message.author.username}> per questo motivo: ${reason}`)
+            .catch(error => message.channel.send(`Scusa <${message.author}> non posso warnare perchè : ${error}`));
             let warnEmbed = new MessageEmbed()
             .setTitle("**__Warn Report__**")
-            .setDescription(`**<@${member.user.id}> has been warned by <@${message.author.id}>**`)
-            .addField(`**Reason:**`, `\`${reason}\``)
-            .addField(`**Action:**`, `\`Warn\``)
-            .addField(`**Moderator:**`, `${message.author}`)
+            .setColor('RANDOM')
+            .setDescription(`**<@${member.user.id}> è stato warnato/a da <@${message.author.id}>**`)
+            .addField(`**Motivo:**`, `\`${reason}\``)
+            .addField(`**Azione:**`, `\`Warn\``)
+            .addField(`**Moderatore:**`, `${message.author}`)
 
             message.channel.send(warnEmbed)
+
+            let warnEmbed1 = new MessageEmbed()
+            .setTitle("**__Warn Report__**")
+            .setColor('RANDOM')
+            .setDescription(`**Sei stato warnato/a da <@${message.author.id}>**`)
+            .addField(`**Motivo:**`, `\`${reason}\``)
+            .addField(`**Azione:**`, `\`Warn\``)
+            .addField(`**Moderatore:**`, `${message.author}`)
+            member.send(warnEmbed1)
 
     }
 }

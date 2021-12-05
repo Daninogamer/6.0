@@ -153,4 +153,10 @@ client.on('message', message => {
     else if(command == 'instagram'){
         client.commands.get('instagram').execute(client, message, args);
     }
+    else if(command == 'sposta'){
+        client.commands.get('sposta').execute(client, message, args);
+    }
+    else if(command == 'warn'){
+        client.commands.get('warn').execute(client, message, args);
+    }
 });

@@ -8,17 +8,5 @@
     },
     "categorie": {
         "ticket": "884376875059806228"
-    },
-    "canali temportanei": {
-        "channel_libera": "908685888865837067",
-        "channel_unranked": "915521045950234654",
-        "channel_ranked": "915521134018064434",
-        "channel_personalizzata": "915521326914076672",
-        "parent": "860785766887194635",
-        "LIBERA_limit": 5,
-        "UNRANKED_limit": 5,
-        "RANKED_limit": 5,
-        "PERSONALIZZAtA_limit": 10
     }
-
 }
