@@ -30,15 +30,18 @@ module.exports = {
         if(!member.bannable) return message.channel.send("**Non è stato possibile bannare questo utente!**");
 
         await member.send(embed);
+        await member.ban({
+            reason: reason
+        })
         
         const banEmbed = new MessageEmbed()
         .setTitle("**__Ban Report__**")
         .setColor('RANDOM')
-        .setDescription(`**L'utente <${member.id}> è stato bannato da <@${message.author.id}>**`)
+        .setDescription(`**L'utente <@${member.id}> è stato bannato da <@${message.author.id}>**`)
         .addField(`**Motivo:**`, `\`${reason}\``)
         .addField(`**Azione:**`, `\`ban\``)
         .addField(`**Moderatore:**`, `${message.author}`)
-        member.send(banEmbed)
+        message.channel.send(banEmbed)
 
     }
 }

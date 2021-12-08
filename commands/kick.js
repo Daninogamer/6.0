@@ -30,15 +30,18 @@ module.exports = {
         if(!member.kickable) return message.channel.send("**Non è stato possibile kickare questo utente!**");
 
         await member.send(embed);
+        await member.kick({
+            reason: reason
+        })
 
         const kickEmbed = new MessageEmbed()
         .setTitle("**__Kick Report__**")
         .setColor('RANDOM')
-        .setDescription(`**L'utente <${member.id}> è stato kickato da <@${message.author.id}>**`)
+        .setDescription(`**L'utente <@${member.id}> è stato kickato da <@${message.author.id}>**`)
         .addField(`**Motivo:**`, `\`${reason}\``)
         .addField(`**Azione:**`, `\`Kick\``)
         .addField(`**Moderatore:**`, `${message.author}`)
-        member.send(kickEmbed)
+        message.channel.send(kickEmbed)
 
 
     }
