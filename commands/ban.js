@@ -29,7 +29,7 @@ module.exports = {
 
         await member.send(embed);
         
-        let banEmbed = new MessageEmbed()
+        const banEmbed = new MessageEmbed()
         .setTitle("**__Ban Report__**")
         .setColor('RANDOM')
         .setDescription(`**L'utente <${member.id}> è stato bannato da <@${message.author.id}>**`)

@@ -28,7 +28,7 @@ module.exports = {
 
         await member.send(embed);
 
-        let kickEmbed = new MessageEmbed()
+        const kickEmbed = new MessageEmbed()
         .setTitle("**__Kick Report__**")
         .setColor('RANDOM')
         .setDescription(`**L'utente <${member.id}> è stato kickato da <@${message.author.id}>**`)
