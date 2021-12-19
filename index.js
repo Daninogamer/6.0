@@ -28,6 +28,7 @@ client.once('ready', () => {
 })
 
 
+
 const status = [
     `| $help |`,
     `il server`,
@@ -158,5 +159,8 @@ client.on('message', message => {
     }
     else if(command == 'warn'){
         client.commands.get('warn').execute(client, message, args);
+    }
+    else if(command == 'usereport'){
+        client.commands.get('usereport').execute(client, message, args);
     }
 });
