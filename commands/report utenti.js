@@ -23,6 +23,7 @@ module.exports = {
         .addField(`**Utente:**`, `\`${target}\``)
         .addField(`**Motivo:**`, `\`${reason}\``)
         .addField(`**Provvedimenti:**`, `\`Si aspettano i 2 giorni per la risposta dell'utente\``)
+        .addField(`**Aggiornamento:**`, `\`Se l'utente dopo 2 giorni non da risposta il moderatore deve aggiornare i provvedimenti\``)
         .addField(`**Immagine:**`, `\`Il moderatore allegherà il report effettuato in privato.\``)
         .addField(`**Moderatore:**`, `${message.author}`)
         message.channel.send(reportEmbed)
