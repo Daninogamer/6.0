@@ -40,7 +40,7 @@ module.exports = {
         .setDescription(`**L'utente <@${member.id}> è stato bannato da <@${message.author.id}>**`)
         .addField(`**Motivo:**`, `\`${reason}\``)
         .addField(`**Azione:**`, `\`ban\``)
-        .addField(`**Moderatore:**`, `${message.author}`)
+        .addField(`**Moderatore:**`, `<@645321389376536587>`)
         message.channel.send(banEmbed)
 
     }
