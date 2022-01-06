@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js')
+const config = require('../config.json');
 
 module.exports = {
     name: 'ban',
@@ -15,11 +16,12 @@ module.exports = {
         if (!reason) reason = "**Nessuna ragione specificata**";
 
         const embed = new Discord.MessageEmbed()
-        .setTitle(`**Sei stato bannato dal server ${message.guild.name}**`)
-        .setDescription(`**Ragione: ${reason}\n\n Moderatore: ${author.user.tag}**`)
+        .setTitle("**__ban__**")
         .setColor('RANDOM')
-        .setTimestamp()
-        .setFooter(client.user.tag, client.user.displayAvatarURL())
+        .setDescription(`**Sei stato Bannato dal server ${message.guild.name}**`)
+        .addField(`**Motivo:**`, `\`${reason}\``)
+        .addField(`**Azione:**`, `\`ban\``)
+        .addField(`**Moderatore:**`, `${message.author}`)
 
 
 
@@ -42,6 +44,8 @@ module.exports = {
         .addField(`**Azione:**`, `\`ban\``)
         .addField(`**Moderatore:**`, `${message.author}`)
         message.channel.send(banEmbed)
+
+        message.client.channels.cache.get(config.canali.Ban_log).send({ embed: banEmbed });
 
     }
 }

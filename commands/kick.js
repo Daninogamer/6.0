@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js')
+const config = require('../config.json');
 
 
 module.exports = {
@@ -15,11 +16,12 @@ module.exports = {
         if (!reason) reason = "Nessuna ragione specificata";
 
         const embed = new Discord.MessageEmbed()
-        .setTitle(`**Sei stato kickato da ${message.guild.name}**`)
-        .setDescription(`**Ragione: ${reason}\n\n Moderatore: ${author.user.tag}**`)
+        .setTitle("**__Kick__**")
         .setColor('RANDOM')
-        .setTimestamp()
-        .setFooter(client.user.tag, client.user.displayAvatarURL())
+        .setDescription(`**Sei stato kickato  dal server ${message.guild.name}*`)
+        .addField(`**Motivo:**`, `\`${reason}\``)
+        .addField(`**Azione:**`, `\`Kick\``)
+        .addField(`**Moderatore:**`, `${message.author}`)
 
 
 
@@ -42,6 +44,10 @@ module.exports = {
         .addField(`**Azione:**`, `\`Kick\``)
         .addField(`**Moderatore:**`, `${message.author}`)
         message.channel.send(kickEmbed)
+
+
+        message.client.channels.cache.get(config.canali.Kick_log).send({ embed: kickEmbed });
+
 
 
     }
