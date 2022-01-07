@@ -29,6 +29,10 @@ module.exports = {
 
         if(!member)  return message.channel.send("**L'utente non è valido o non è più nel server!**");
 
+        if(target === author) {
+            return message.reply('**Non puoi kickare te stesso**')
+        }
+
         if(!member.kickable) return message.channel.send("**Non è stato possibile kickare questo utente!**");
 
         await member.send(embed);

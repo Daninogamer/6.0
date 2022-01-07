@@ -29,6 +29,10 @@ module.exports = {
 
         if(!member)  return message.channel.send("**L'utente non è valido o non è più nel server!**");
 
+        if(target === author) {
+            return message.reply('**Non puoi bannare te stesso**')
+        }
+
         if(!member.bannable) return message.channel.send("**Non è stato possibile bannare questo utente!**");
 
         await member.send(embed);
