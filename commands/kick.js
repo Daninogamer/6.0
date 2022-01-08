@@ -9,7 +9,7 @@ module.exports = {
         const author = message.member;
         const target = message.mentions.members.first();
         
-        if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send('**Non usare questo comando se non hai il permesso di kikare**')
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('**Non usare questo comando se non hai il permesso di kikare**')
 
         const member = message.mentions.members.first();
         let reason = args.slice(1).join(" ");
