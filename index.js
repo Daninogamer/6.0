@@ -163,10 +163,10 @@ client.on('message', message => {
     else if(command == 'usereport'){
         client.commands.get('usereport').execute(client, message, args);
     }
-    else if(command == 'regolamentocommunity'){
-        client.commands.get('regolamentocommunity').execute(client, message, args, Discord);
-    }
     else if(command == 'misuicido'){
         client.commands.get('misuicido').execute(client, message, args, Discord);
+    }
+    else if(command == 'pianodiemergenzaattivato'){
+        client.commands.get('pianodiemergenzaattivato').execute(client, message, args, Discord);
     }
 });
