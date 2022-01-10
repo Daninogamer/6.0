@@ -5,6 +5,8 @@ module.exports = {
     description: 'misuicido',
     async execute(client, message, args, Discord){
 
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('**Brutto bastardo, non puoi fare il comando e non osare provare a farlo!**')
+
         const misuicidoEmbed = new MessageEmbed()
         .setTitle("**Suicidio in corso**")
             .setColor('RED')
