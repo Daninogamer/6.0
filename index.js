@@ -106,7 +106,7 @@ client.on('message', message => {
 
     client.on('guildMemberAdd', member => {
         //Autoruolo
-    const ruolo = member.guild.roles.cache.find(r => r.name === 'Membro');
+    const ruolo = member.guild.roles.cache.find(r => r.name === 'Fungo Fungoso🍄');
     member.roles.add(ruolo);
 })
 
