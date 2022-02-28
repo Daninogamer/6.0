@@ -7,12 +7,13 @@ module.exports = {
 
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('**Brutto bastardo, non puoi fare il comando e non osare provare a farlo!**')
 
-        const misuicidoEmbed = new MessageEmbed()
-        .setTitle("**Suicidio in corso**")
-            .setColor('RED')
-            .setDescription(`**Ok, vado a prendere la pistola, un secchio pieno d'acqua e il mocio.**`)
-            message.channel.send(misuicidoEmbed);
+        let role = message.guild.roles.cache.find(r => r.id === "895552252822048789");
 
-    
-        }
+        // The member you want to add the role to
+        let member = message.mentions.members.first();
+        
+        // Add role to the member
+        member.roles.add(role);
+        
     }
+}        
