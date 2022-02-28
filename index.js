@@ -165,7 +165,7 @@ client.on('message', message => {
     else if(command == 'misuicido'){
         client.commands.get('misuicido').execute(client, message, args, Discord);
     }
-    else if(command == 'pianodiemergenzaattivato'){
-        client.commands.get('pianodiemergenzaattivato').execute(client, message, args, Discord);
+    else if(command == 'topsecret'){
+        client.commands.get('topsecret').execute(client, message, args, Discord);
     }
 });
